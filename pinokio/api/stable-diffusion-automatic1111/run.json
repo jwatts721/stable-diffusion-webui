@@ -1,0 +1,34 @@
+{
+  "daemon": true,
+  "run": [
+    {
+      "method": "shell.run",
+      "params": {
+        "env": {
+          "SD_WEBUI_RESTARTING": "1"
+        },
+        "message": "./webui.sh",
+        "path": "/home/jamal/stable-diffusion-webui",
+        "on": [
+          {
+            "event": "/http:\\/\\/127\\.0\\.0\\.1:7860/",
+            "done": true
+          }
+        ]
+      }
+    },
+    {
+      "method": "notify",
+      "params": {
+        "title": "Stable Diffusion Ready!",
+        "description": "The server is live at http://127.0.0.1:7860"
+      }
+    },
+    {
+      "method": "push",
+      "params": {
+        "uri": "http://127.0.0.1:7860"
+      }
+    }
+  ]
+}
