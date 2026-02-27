@@ -215,6 +215,8 @@ then
     then
         "${python_cmd}" -m venv "${venv_dir}"
         "${venv_dir}"/bin/python -m pip install --upgrade pip
+        # patched version - installs clip to complete requirements to avoid errors with missing modules
+        "${venv_dir}"/bin/python -m pip install clip 
         first_launch=1
     fi
     # shellcheck source=/dev/null
